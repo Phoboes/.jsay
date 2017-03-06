@@ -8,16 +8,16 @@ jlism () {
   clear
   win_width="$(tput cols)"
 
-  if [[ $1 = "d" && $win_width -gt 80 ]]; 
+  if [[ $1 = "l" && $win_width -gt 80 ]]; 
     then
     file_line=4
-  elif [[ $1 = "d" && $win_width -gt 69 ]]; 
+  elif [[ $1 = "l" && $win_width -gt 69 ]]; 
     then
    file_line=3
-  elif [[ $1 = "l" && $win_width -gt 96 ]]; 
+  elif [[ $1 = "d" && $win_width -gt 96 ]]; 
     then
    file_line=1
-  elif [[ $1 = "l" && $win_width -gt 69 ]];
+  elif [[ $1 = "d" && $win_width -gt 69 ]];
     then
    file_line=2
    else 
