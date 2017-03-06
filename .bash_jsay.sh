@@ -1,15 +1,8 @@
 #!/bin/sh
-bobble () {
-  clear
-  read_file=$(sed -n "$1p" ~/jsay/srctxt/jedstr.txt)
-  IFS="*"
-  win_width="$(tput cols)"
-  for var in $read_file
-    do
-      printf "\n%*s" $(( (${#var} + win_width) / 2)) "$var"
-  done
-  printf "\n"
-}
+
+#############################################################################
+# For light terminals: call jlism, for dark, pass l as a parameter: jlism l #
+#############################################################################
 
 jlism () {
   clear
@@ -49,6 +42,10 @@ jlism () {
    [ $i -eq $rnd ] && break
   done < $FILE
 
+  ######################################################
+  # Break string on *. Iterate through lines & center. #
+  ######################################################
+
   file_string=$(sed -n "$file_line p" ~/jsay/srctxt/jedstr.txt)
   IFS="*"
   win_width="$(tput cols)"
@@ -68,12 +65,3 @@ jlism () {
   printf "\n%*s\n" $(( (${#lbreak} + win_width) / 2)) "$lbreak"
 
 }
-
-#j3 mwidth = 69
-#jlight = 57
-#j1 = 96
-
-
-#j3 mwidth = 69
-#jlight = 57
-#j1 = 96
