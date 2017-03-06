@@ -25,7 +25,7 @@ jlism () {
   # Pluck a random line from file.#
   #################################
 
-  FILE=~/jsay/srctxt/jisms.txt
+  FILE=~/.jsay/srctxt/jisms.txt
   # get line count for $FILE (simulate 'wc -l')
   lc=0
   while read -r line; do
@@ -46,7 +46,7 @@ jlism () {
   # Break string on *. Iterate through lines & center. #
   ######################################################
 
-  file_string=$(sed -n "$file_line p" ~/jsay/srctxt/jedstr.txt)
+  file_string=$(sed -n "$file_line p" ~/.jsay/srctxt/jedstr.txt)
   IFS="*"
   win_width="$(tput cols)"
   for var in $file_string
