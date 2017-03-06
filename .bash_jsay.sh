@@ -1,0 +1,79 @@
+#!/bin/sh
+bobble () {
+  clear
+  read_file=$(sed -n "$1p" ~/homebrew-jsay/srctxt/jedstr.txt)
+  IFS="*"
+  win_width="$(tput cols)"
+  for var in $read_file
+    do
+      printf "\n%*s" $(( (${#var} + win_width) / 2)) "$var"
+  done
+  printf "\n"
+}
+
+jlism () {
+  clear
+  win_width="$(tput cols)"
+
+  if [[ $1 = "l" ]]; 
+    then
+   file_line=3
+  elif [[ $win_width -gt 96 ]]; 
+    then
+   file_line=1
+  elif [[ $win_width -gt 69 ]];
+    then
+   file_line=2
+   else 
+    file_line=0
+  fi
+
+  #################################
+  # Pluck a random line from file.#
+  #################################
+
+  FILE=~/homebrew-jsay/srctxt/jisms.txt
+  # get line count for $FILE (simulate 'wc -l')
+  lc=0
+  while read -r line; do
+   ((lc++))
+  done < $FILE
+  # get a random number between 1 and $lc
+  rnd=$RANDOM
+  let "rnd %= $lc"
+  ((rnd++))
+  # traverse file and find line number $rnd
+  i=0
+  while read -r line; do
+   ((i++))
+   [ $i -eq $rnd ] && break
+  done < $FILE
+
+  file_string=$(sed -n "$file_line p" ~/homebrew-jsay/srctxt/jedstr.txt)
+  IFS="*"
+  win_width="$(tput cols)"
+  for var in $file_string
+    do
+      printf "\n%*s" $(( (${#var} + win_width) / 2)) "$var"
+  done
+  printf "\n"
+
+  ##################################
+  # Return string centred in a box #
+  ##################################
+
+  lbreak=`printf '%*s' "$win_width" | tr ' ' "-"`
+  printf "%*s\n" $(( (${#lbreak} + win_width) / 2)) "$lbreak"
+  printf "\n%*s\n" $(( (${#line} + win_width) / 2)) "$line"
+  printf "\n%*s\n" $(( (${#lbreak} + win_width) / 2)) "$lbreak"
+
+}
+
+#j3 mwidth = 69
+#jlight = 57
+#j1 = 96
+
+
+#j3 mwidth = 69
+#jlight = 57
+#j1 = 96
