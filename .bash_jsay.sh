@@ -1,7 +1,7 @@
 #!/bin/sh
 bobble () {
   clear
-  read_file=$(sed -n "$1p" ~/homebrew-jsay/srctxt/jedstr.txt)
+  read_file=$(sed -n "$1p" ~/jsay/srctxt/jedstr.txt)
   IFS="*"
   win_width="$(tput cols)"
   for var in $read_file
@@ -32,7 +32,7 @@ jlism () {
   # Pluck a random line from file.#
   #################################
 
-  FILE=~/homebrew-jsay/srctxt/jisms.txt
+  FILE=~/jsay/srctxt/jisms.txt
   # get line count for $FILE (simulate 'wc -l')
   lc=0
   while read -r line; do
@@ -49,7 +49,7 @@ jlism () {
    [ $i -eq $rnd ] && break
   done < $FILE
 
-  file_string=$(sed -n "$file_line p" ~/homebrew-jsay/srctxt/jedstr.txt)
+  file_string=$(sed -n "$file_line p" ~/jsay/srctxt/jedstr.txt)
   IFS="*"
   win_width="$(tput cols)"
   for var in $file_string
