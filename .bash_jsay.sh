@@ -59,7 +59,7 @@ jlism () {
   printf "\n"
 
   ##################################
-  # Return string centred in a box #
+  # Print centred text with breaks #
   ##################################
 
   lbreak=`printf '%*s' "$win_width" | tr ' ' "-"`
